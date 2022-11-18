@@ -7,7 +7,7 @@ mkdir $dir
 fi
 echo -e "\e[32mStarting Module 5-Checking for firewall...\e[0m" | tee -a $dir/report
 url="https://${1}"
-if ! curl -s $url >/dev/null
+if ! curl -s -m 5 $url >/dev/null
 then
 url="http://${1}" 
 fi

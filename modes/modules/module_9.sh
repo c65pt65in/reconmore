@@ -8,7 +8,7 @@ fi
 echo -e "\e[32mStarting Module 9-Checking web application vulnerabilities...\e[0m" | tee -a $dir/report
 path="/usr/share/reconmore/arachni-1.6.1.3-0.6.1.1/bin/arachni"
 url="https://${1}"
-if ! curl -s $url >/dev/null
+if ! curl -s -m 5 $url >/dev/null
 then
 url="http://${1}" 
 fi

@@ -21,7 +21,7 @@ fi
 done
 echo -e '\e[33mSearching for cloud resources...\e[0m' | tee -a $dir/report
 url="https://${1}"
-if ! curl -s $url >/dev/null
+if ! curl -s -m 5 $url >/dev/null
 then
 url="http://${1}" 
 fi
