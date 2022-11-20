@@ -18,7 +18,7 @@ def documents_func(input_domain,filename):
               "Referer" : "https://html.duckduckgo.com/"}
     links=[]
     for x in ['pdf','docx','xlsx','pptx']:
-        params = { "q": input_domain + " filetype:" + x + " site:uniwa.gr", "b" : "", "kl" : "", "df":""}
+        params = { "q": "filetype:" + x + " site:" + input_domain, "b" : "", "kl" : "", "df":""}
         response = requests.post(url, params=params, headers = headers)
         tree = html.fromstring(response.content)
         result_snippet = tree.xpath('//a[@class="result__snippet"]')
