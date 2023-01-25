@@ -11,7 +11,7 @@ import time
 def documents_func(input_domain,filename):
     download_dir="/usr/share/reconmore/reports/"+filename+"/downloads"
     url = "https://html.duckduckgo.com/html/?"
-    user_agent = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:104.0) Gecko/20100101 Firefox/104.0"
+    user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
     headers = {"user-agent": user_agent, "Accept-Language":"el-GR,el;q=0.8,en-US;q=0.5,en;q=0.3","Connection":"keep-alive", \
               "Content-Type":"application/x-www-form-urlencoded","DNT":"1","Sec-Fetch-Dest":"document","Sec-Fetch-Mode":"navigate","Sec-Fetch-Site":"same-origin", \
               "Sec-Fetch-User":"?1","TE":"trailers","Upgrade-Insecure-Requests":"1", "Host" : "html.duckduckgo.com", "Origin" : "https://html.duckduckgo.com", \
@@ -19,7 +19,7 @@ def documents_func(input_domain,filename):
     links=[]
     for x in ['pdf','docx','xlsx','pptx']:
         params = { "q": "filetype:" + x + " site:" + input_domain, "b" : "", "kl" : "", "df":""}
-        response = requests.post(url, params=params, headers = headers)
+        response = requests.post(url, data=params, headers = headers)
         tree = html.fromstring(response.content)
         result_snippet = tree.xpath('//a[@class="result__snippet"]')
         if len(result_snippet) > 0:

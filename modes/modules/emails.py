@@ -16,7 +16,7 @@ def emails_func(input_domain):
               "Sec-Fetch-User":"?1","TE":"trailers","Upgrade-Insecure-Requests":"1", "Host" : "html.duckduckgo.com", "Origin" : "https://html.duckduckgo.com", \
               "Referer" : "https://html.duckduckgo.com/"}
     params = { "q": "@"+input_domain , "b" : "", "kl" : "", "df":""}
-    response = requests.post(url, params=params, headers = headers)
+    response = requests.post(url, data=params, headers = headers)
     tree = html.fromstring(response.content)
     result_snippet = tree.xpath('//a[@class="result__snippet"]')
     emails = []
