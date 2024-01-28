@@ -23,7 +23,7 @@ action = function (host,port)
             elseif port.number == 500 then
                print("\27[31mPORT 500: It is advised that access to this port is limited, the default settings are removed and certificates are used for authentication!\27[0m")
             elseif port.number == 68 then
-               print("\27[31mPORT 68: It is advised to that DHCP MAC address filtering and MAC address check are enabled in the DHCP server!\27[0m")
+               print("\27[31mPORT 68: It is advised that DHCP MAC address filtering and MAC address check are enabled in the DHCP server!\27[0m")
             elseif port.number == 520 then
                print("\27[31mPORT 520: It is advised that this port should be closed!\27[0m")
             elseif port.number == 1900 then
