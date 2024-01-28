@@ -1,7 +1,8 @@
 ## INSTALL  
 ```
-Download Dockerfile and execute:
-sudo docker build -t reconmore . && sudo docker run -it reconmore /bin/bash
+Download Dockerfile
+Build with sudo docker build -t reconmore . 
+Run with sudo docker run -it reconmore /bin/bash
 ```
 ## USAGE  
 ```

@@ -62,6 +62,7 @@ cat /usr/share/reconmore/subdomains-300.txt | while read line; do echo $line"."$
 for nameserver in $(dig -t ns $1 +noall +answer | awk '{print $5}')
 do
 nameserver_ip=$(dig +short $nameserver)
-timeout -s 9 35s dnsrecon -t snoop --tcp -n $nameserver_ip -D /dev/shm/temp 2>/dev/null | tee -a $dir/report
+timeout -k 1 25s dnsrecon -t snoop --tcp -n $nameserver_ip -D /dev/shm/temp 2>/dev/null | tee -a $dir/report
 done
+rm /dev/shm/temp
 echo -e "\e[31mReport saved at $dir.\e[0m"
