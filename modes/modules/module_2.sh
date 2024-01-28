@@ -17,3 +17,4 @@ echo -e '\e[33mAnalysing downloaded files...\e[0m' | tee -a $dir/report
 exiftool $dir/downloads | tee -a $dir/report
 echo -e '\e[31mDocuments metadata should be inspected for sensitive information!\e[0m' | tee -a $dir/report
 fi
+echo -e "\e[31mReport saved at $dir.\e[0m"

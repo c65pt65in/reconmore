@@ -14,3 +14,4 @@ if [ ! -z $var ];
 then
 echo -e '\e[31mPorts associated with NoSQL databases discovered.\e[0m' | tee -a $dir/report
 fi
+echo -e "\e[31mReport saved at $dir.\e[0m"

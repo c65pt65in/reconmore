@@ -2,8 +2,8 @@
 
 dir=/usr/share/reconmore/reports/$2
 mkdir $dir
-echo -e "\e[32mStarting Module 1-Gathering network information...\e[0m" | tee -a $dir/report
-echo -e '\e[33m## BASIC NETWORK INFORMATION ##\e[0m' | tee -a $dir/report 
+echo -e "\e[32mStarting Module 1-Gathering basic information...\e[0m" | tee -a $dir/report
+echo -e '\e[33m## BASIC DOMAIN INFORMATION ##\e[0m' | tee -a $dir/report 
 domain_ip=$(dig +short $1) 
 echo -e '\e[33mIP Address\e[0m' | tee -a $dir/report 
 echo $domain_ip | tee -a $dir/report 
@@ -58,8 +58,10 @@ then
 echo -e '\e[31mConsider implementing DNSSEC protocol for more protection!\e[0m' | tee -a $dir/report
 fi     
 echo -e '\e[33mPerforming cache snooping against all nameservers\e[0m' | tee -a $dir/report
+cat /usr/share/reconmore/subdomains-300.txt | while read line; do echo $line"."$1 >> /dev/shm/temp;done
 for nameserver in $(dig -t ns $1 +noall +answer | awk '{print $5}')
 do
 nameserver_ip=$(dig +short $nameserver)
-timeout -s 9 35s dnsrecon -t snoop --tcp -n $nameserver_ip -D /usr/share/reconmore/subdomains-300.txt 2>/dev/null | tee -a $dir/report
+timeout -s 9 35s dnsrecon -t snoop --tcp -n $nameserver_ip -D /dev/shm/temp 2>/dev/null | tee -a $dir/report
 done
+echo -e "\e[31mReport saved at $dir.\e[0m"

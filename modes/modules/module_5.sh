@@ -12,3 +12,4 @@ then
 url="http://${1}" 
 fi
 wafw00f $url | tee -a $dir/report
+echo -e "\e[31mReport saved at $dir.\e[0m"

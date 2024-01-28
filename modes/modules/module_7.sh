@@ -22,3 +22,4 @@ if [ ! -z "$all_udp" ]
 then
 sudo nmap -n -Pn -sU --script default,/usr/share/reconmore/protection_measures_udp.nse -sV -p $all_udp $1 | tee -a $dir/report
 fi
+echo -e "\e[31mReport saved at $dir.\e[0m"

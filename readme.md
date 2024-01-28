@@ -1,8 +1,7 @@
 ## INSTALL  
 ```
-git clone https://github.com/c65pt65in/reconmore.git
-cd reconmore
-sudo ./install.sh
+Download Dockerfile and execute:
+sudo docker build -t reconmore . && sudo docker run -it reconmore /bin/bash
 ```
 ## USAGE  
 ```
@@ -19,7 +18,7 @@ optional arguments:
   -h, --help        Show help message and exit.  
   --advanced        Use advanced mode. Performs advanced passive and active reconnaissance. Using modules no. 1,2,3,4,5,7,9. 
   --aggressive      Use aggressive mode. Performs extended passive and active reconnaissance (very slow). Using modules no. 1,2,3,4,5,8,9.
-  -1 --module1      Gather basic network information.
+  -1 --module1      Gather basic domain information.
   -2 --module2      Gather emails and documents.
   -3 --module3      Gather website technologies.
   -4 --module4      Check for database vulnerabilities.

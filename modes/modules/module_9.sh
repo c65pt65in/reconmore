@@ -12,9 +12,9 @@ if ! curl -s -m 5 $url >/dev/null
 then
 url="http://${1}" 
 fi
-sudo -u $SUDO_USER $path --output-only-positives --browser-cluster-pool-size 6 --browser-cluster-ignore-images $url --report-save-path /tmp/arachni.afr --checks=csrf,code-injection*,ldap_injection,path_traversal,file_inclusion,response_splitting,os_cmd-injection*,rfi,unvalidated_redirect*,xpath_injection,xss*,source_code_disclosure,xxe,backup_files,backup_directories,common_admin_interfaces,common_directories,http_put,unencrypted_password_forms,webdav,xst,cvs_svn_users,htaccess_limit,interesting_responses,html_objects,mixed_resource,insecure_cookies,http_only_cookies,password_autocomplete,form_upload,cookie_set_for_parent_domain --scope-directory-depth-limit 5 2>/dev/null 
-sudo -u $SUDO_USER /usr/share/reconmore/arachni-1.6.1.3-0.6.1.1/bin/arachni_reporter /tmp/arachni.afr >> $dir/report
-sudo -u $SUDO_USER rm -f /tmp/arachni.afr
+sudo -u www-data $path --output-only-positives --browser-cluster-pool-size 6 --browser-cluster-ignore-images $url --report-save-path /tmp/arachni.afr --checks=csrf,code-injection*,ldap_injection,path_traversal,file_inclusion,response_splitting,os_cmd-injection*,rfi,unvalidated_redirect*,xpath_injection,xss*,source_code_disclosure,xxe,backup_files,backup_directories,common_admin_interfaces,common_directories,http_put,unencrypted_password_forms,webdav,xst,cvs_svn_users,htaccess_limit,interesting_responses,html_objects,mixed_resource,insecure_cookies,http_only_cookies,password_autocomplete,form_upload,cookie_set_for_parent_domain --scope-directory-depth-limit 5 2>/dev/null 
+sudo -u www-data /usr/share/reconmore/arachni-1.6.1.3-0.6.1.1/bin/arachni_reporter /tmp/arachni.afr >> $dir/report
+sudo -u www-data rm -f /tmp/arachni.afr
 report=$(cat $dir/report)
 if [[ $report == *"Cross-Site Request Forgery"* ]]
 then

@@ -22,3 +22,4 @@ if [ ! -z "$all_udp" ]
 then
 sudo nmap --script "not dos and not broadcast and not external and not fuzzer" --script-timeout 10m --version-intensity 0 --max-rtt-timeout 300ms --max-retries 10 --max-scan-delay 10 -n -Pn -sU -sV -p $all_udp $1 | tee -a $dir/report
 fi
+echo -e "\e[31mReport saved at $dir.\e[0m"

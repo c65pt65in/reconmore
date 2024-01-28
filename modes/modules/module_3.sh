@@ -26,3 +26,4 @@ then
 url="http://${1}" 
 fi
 python3 /usr/share/reconmore/CloudScraper/CloudScraper.py -u $url -v -p 4 --no-verify 2>/dev/null | tee -a $dir/report 
+echo -e "\e[31mReport saved at $dir.\e[0m"
