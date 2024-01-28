@@ -5,7 +5,7 @@ sudo docker build -t reconmore . && sudo docker run -it reconmore /bin/bash
 ```
 ## USAGE  
 ```
-sudo reconmore [-h] [--advanced | --aggressive | -1 | -2 | -3 | -4 | -5 | -6 | -7 | -8 | -9] <target domain name>
+reconmore [-h] [--advanced | --aggressive | -1 | -2 | -3 | -4 | -5 | -6 | -7 | -8 | -9] <target domain name>
 
 Reconmore measures the attack surface of a given domain. There are three modes of operation:
 Normal, Advanced and Aggressive mode as shown in the arguments. By default is used Normal mode with modules no. 1,2,3,5,6. 
@@ -29,7 +29,7 @@ optional arguments:
   -9 --module9      Perform web application tests.    
 ```
 ###### EXAMPLES  
-sudo reconmore example.com  
-sudo reconmore example.com --advanced  
-sudo reconmore example.com -1  
-sudo reconmore example.com --module2
+reconmore example.com  
+reconmore example.com --advanced  
+reconmore example.com -1  
+reconmore example.com --module2
